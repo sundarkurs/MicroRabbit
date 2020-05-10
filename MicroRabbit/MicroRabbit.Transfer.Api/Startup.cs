@@ -1,14 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
 using MediatR;
-using MicroRabbit.Banking.Data.Context;
 using MicroRabbit.Infra.IoC;
+using MicroRabbit.Transfer.Data.Context;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -30,9 +25,9 @@ namespace MicroRabbit.Transfer.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<BankingDbContext>(options =>
+            services.AddDbContext<TransferDbContext>(options =>
             {
-                options.UseSqlServer(Configuration.GetConnectionString("BankingDbConnection"));
+                options.UseSqlServer(Configuration.GetConnectionString("TransferDbConnection"));
             });
 
             services.AddControllers();
